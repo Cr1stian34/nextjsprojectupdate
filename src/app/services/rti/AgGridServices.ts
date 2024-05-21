@@ -13,5 +13,5 @@ export const useAnimeOp = (idanime: number)=>{
 }
 
 export const useYoutube = (query: string)=>{
-    return useQuery<string, AxiosError>({queryKey: ["youtube", query],queryFn: ()=> animeAPI.getYoutube(query)})
+    return useQuery<any, AxiosError>({queryKey: ["youtube", query],queryFn: ()=> animeAPI.getYoutube(query)})
 }
