@@ -74,7 +74,7 @@ const MapBox = () => {
         mapRef.current = null;
       }
     };
-  }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
+  }, [lat, lng, zoom]); // Dependencias vacías para que se ejecute solo una vez al montar el componente
 
   return (
     <div className="relative h-[85vh]">
