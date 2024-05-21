@@ -7,6 +7,7 @@ import {
   IconButton,
   Menu,
   MenuButton,
+  MenuGroup,
   MenuItem,
   MenuList,
   Popover,
@@ -17,12 +18,14 @@ import {
   PopoverTrigger,
   Select,
   Spacer,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
+  const isMobile = useBreakpointValue({ base: true, lg: false });
   return (
     <Flex
       as="nav"
@@ -41,50 +44,38 @@ const Navbar = () => {
 
       <Spacer />
 
-      <div className="lg:hidden">
-        <Flex align="center" justify="flex-end">
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<HamburgerIcon />}
-              variant="outline"
-            />
-            <MenuList color={"black"}>
+      {isMobile ? (
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon />}
+            variant="outline"
+          />
+          <MenuList color={"black"}>
+            <MenuItem>
+              <Link href="/">Inicio</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href="/pages/mapbox">Map Box</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href="/pages/rti">Tabla Ag Grid</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href="/pages/chartAggrid">Grafica</Link>
+            </MenuItem>
+            <MenuGroup title="Anime">
               <MenuItem>
-                <Link href={"/"}>Inicio</Link>
+                <Link href="/pages/anime">Anime Top</Link>
               </MenuItem>
               <MenuItem>
-                <Link href={"/pages/mapbox"}>Map Box</Link>
+                <Link href="/pages/animeOpenings">Youtube</Link>
               </MenuItem>
-              <MenuItem>
-                <Link href={"/pages/rti"}>Tabla Ag Grid</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href={"/pages/chartAggrid"}>Grafica</Link>
-              </MenuItem>
-              <MenuItem>
-                <Popover trigger="hover" placement="right-start">
-                  <PopoverTrigger>
-                    <Box as="span" cursor="pointer">
-                      Anime
-                    </Box>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <PopoverArrow />
-                    <PopoverBody className="flex flex-col">
-                      <Link href={"/pages/anime"}>Anime Top</Link>
-                      <Link href={"/pages/animeOpenings"}>Youtube</Link>
-                    </PopoverBody>
-                  </PopoverContent>
-                </Popover>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </div>
-
-      <div className="hidden lg:inline-flex">
+            </MenuGroup>
+          </MenuList>
+        </Menu>
+      ) : (
         <Flex align="center" justify="flex-end">
           <Link href="/">
             <Button colorScheme="teal" mr={4}>
@@ -124,7 +115,7 @@ const Navbar = () => {
             </MenuList>
           </Menu>
         </Flex>
-      </div>
+      )}
     </Flex>
   );
 };
