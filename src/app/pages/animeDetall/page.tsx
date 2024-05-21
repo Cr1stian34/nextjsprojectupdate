@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const AnimeDetalls = () => {
-  const [anime, setAnime] = useState(null);
+  const [anime, setAnime] = useState<any>(null);
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
