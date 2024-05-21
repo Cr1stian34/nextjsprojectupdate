@@ -2,9 +2,9 @@
 import LoaderCommon from "@/app/common/loader/LoaderCommon";
 import { Box, Card, Flex, Image, Stack, Text } from "@chakra-ui/react";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
-const AnimeDetalls = () => {
+const AnimeDetailContent = () => {
   const [anime, setAnime] = useState<any>(null);
 
   const pathname = usePathname();
@@ -71,6 +71,14 @@ const AnimeDetalls = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const AnimeDetalls = () => {
+  return (
+    <Suspense fallback={<LoaderCommon />}>
+      <AnimeDetailContent />
+    </Suspense>
   );
 };
 
