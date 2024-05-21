@@ -41,7 +41,7 @@ const AnimeDetalls = () => {
     <div className="w-full h-[100%] bg-black py-5">
       <div className="w-[80%] lg:flex lg:flex-row h-auto mx-auto py-10 mt-5 mb-5 gap-2 p-5 rounded-md bg-slate-900 text-white">
         <div className="w-auto h-auto mx-auto flex justify-center lg:w-[30%] lg:h-[300px]">
-          <Image src={anime.images.jpg.image_url} />
+          <Image src={anime.images.jpg.image_url} alt={anime.title} />
         </div>
         <div className="w-auto lg:max-w-[70%]">
           <div>
